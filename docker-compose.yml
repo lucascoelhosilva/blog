@@ -1,0 +1,20 @@
+version: '2'
+services:
+  postgres:
+    networks:
+      default:
+    image: postgres:9.6
+    mem_limit: 256m
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: blog
+      POSTGRES_PASSWORD: blog
+      POSTGRES_DB: blog
+  api:
+    build: .
+    mem_limit: 512m
+    ports:
+      - "8080:8080"
+networks:
+  default:
